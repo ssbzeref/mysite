@@ -87,8 +87,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #         'PORT': '',
 #     }
 # }
+DATABASES = { 'default': dj_database_url.config(default='postgres://ihyswtxfrivnyk:2445dc512f8eb40b4cf97695ba7d4a2f68fe15fa4ffb84317a2adb4c09cc25bf@ec2-52-203-160-194.compute-1.amazonaws.com:5432/d8soalvsko7k5p') }
 
-DATABASES['default'] = dj_database_url.config(default='postgres://ihyswtxfrivnyk:2445dc512f8eb40b4cf97695ba7d4a2f68fe15fa4ffb84317a2adb4c09cc25bf@ec2-52-203-160-194.compute-1.amazonaws.com:5432/d8soalvsko7k5p')
+# DATABASES['default']= dj_database_url.config(default='postgres://ihyswtxfrivnyk:2445dc512f8eb40b4cf97695ba7d4a2f68fe15fa4ffb84317a2adb4c09cc25bf@ec2-52-203-160-194.compute-1.amazonaws.com:5432/d8soalvsko7k5p')
 
 
 # Password validation
@@ -128,4 +129,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+# STATIC_URL = '/static/'
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
